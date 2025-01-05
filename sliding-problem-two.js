@@ -1,4 +1,4 @@
-// Maximum Sum of fixed sub array
+// Maximum Sum of fixed sub array of size k
 function maxSumSubArray(arr, k) {
   let maxSum = 0;
   let sum = 0;

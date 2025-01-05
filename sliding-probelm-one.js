@@ -40,3 +40,39 @@ function maxSumSubArrayDistinctEle(arr, k) {
 let arr = [1, 5, 2, 1, 4, 2, 4, 8, 9, 8, 9];
 let k = 3;
 console.log(maxSumSubArrayDistinctEle(arr, k));
+
+// in Above problem we are storing the track of element but in below function we do not keep track of elements
+
+function maxSumSubArrayDistinct(arr, k) {
+  let freq = {};
+  let maxSum = 0;
+  let currentSum = 0;
+  let start = 0;
+  if (arr.length < k) return 0;
+  for (let end = 0; end < arr.length; end++) {
+    const currentEle = arr[end];
+    if (freq[currentEle] === undefined) {
+      freq[currentEle] = 0;
+    }
+    freq[currentEle]++;
+    currentSum += currentEle;
+    while (end - start + 1 > k || freq[currentEle] > 1) {
+      const startEle = arr[start];
+      freq[startEle]--;
+      currentSum -= startEle;
+      if (freq[startEle] === 0) {
+        delete freq[startEle];
+      }
+      start++;
+    }
+
+    if (end - start + 1 === k) {
+      maxSum = currentSum;
+    }
+  }
+  return JSON.stringify({ maxSum, freq });
+}
+
+let arr1 = [1, 5, 2, 1, 4, 2, 4, 8, 9, 8, 9];
+let k2 = 3;
+console.log(maxSumSubArrayDistinct(arr1, k2));
