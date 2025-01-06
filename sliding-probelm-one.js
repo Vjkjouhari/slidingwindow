@@ -37,7 +37,7 @@ function maxSumSubArrayDistinctEle(arr, k) {
   return JSON.stringify({ maxSum, resultSubArray });
 }
 
-let arr = [1, 5, 2, 1, 4, 2, 4, 8, 9, 8, 9];
+let arr = [9, 9, 9, 1, 2, 3];
 let k = 3;
 console.log(maxSumSubArrayDistinctEle(arr, k));
 
@@ -66,13 +66,13 @@ function maxSumSubArrayDistinct(arr, k) {
       start++;
     }
 
-    if (end - start + 1 === k) {
+    if (end - start + 1 === k || currentSum > maxSum) {
       maxSum = currentSum;
     }
   }
   return JSON.stringify({ maxSum, freq });
 }
 
-let arr1 = [1, 5, 2, 1, 4, 2, 4, 8, 9, 8, 9];
+let arr1 = [9, 9, 9, 1, 2, 3];
 let k2 = 3;
 console.log(maxSumSubArrayDistinct(arr1, k2));
